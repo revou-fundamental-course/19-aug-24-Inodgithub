@@ -5,33 +5,75 @@
     <head>
         <meta charset="UTF-8">
         <meta name="view port" content="width-device-width, initial-scale-1.0">
-        <title>Document</title>
+        <title> My Document</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body>
-        <nav>
+        
+        <nav class="header-wrapper">
             <header>
                 <div class="logo-icon"></div>
             </header>
 
             <section class="nav-container">
-                <a href="#" class="nav-item">Home</a>
+                <a href="#home-us" class="nav-item">Home</a>
                 <a href="#our-team-profile" class="nav-item">Our Profile</a>
-                <a href="#" class="nav-item">Achivement</a>
-                <a href="#" class="nav-item">Message Us</a>
+                <a href="#our-achivement" class="nav-item">Achivement</a>
+                <a href="#message-us" class="nav-item">Message Us</a>
             </section>
         </nav>
 
         <hr>
 
         <main>
-            <article>
+            <article id="home-us">
                 <header>
-                    <h1>Hii user, Welcome To Our Website !!!</h1>
+                    <input required type="text" placeholder="Please type your name!!" id="user-name">
+                    <button id="submit">Submit</button>
+                    <p id="error-name"></p>
+                    <h1>Hi <span id="user">User</span>, Welcome to Our Website !!!</h1>
+                    
                 </header>
                 <p>Good morning/afternood/night guyss, hope u can enjoy with our content</p>
-                <div class="banner-img"> </div>
+                <div>
+                    <img
+                    class="img-slideshow"
+                    src="https://picsum.photos/id/236/1000/300"
+                    />
+                    <img
+                    class="img-slideshow"
+                    src="https://picsum.photos/id/237/1000/300"
+                    />
+                    <img
+                    class="img-slideshow"
+                    src="https://picsum.photos/id/238/1000/300"
+                    />
+                    <button onclick="plusDivs(-1)">Previous</button>
+                    <button onclick="plusDivs(1)">Next</button>
+                </div>
+                <script>
+                    var slideIndex = 1;
+                    showDivs(slideIndex);
+                    
+                    function plusDivs(n) {
+                        showDivs(slideIndex += n);
+                    }
+                    function showDivs(n) {
+                        var i;
+                        var imglist = document.getElementsByClassName("img-slideshow");
+                        if (n > imglist.length) {slideIndex = 1}
+                        else if (n < 1) {slideIndex = imglist.length} ;
+                        for (i = 0; i < imglist.length; i++) {
+                            imglist[i].style.display = "none";
+                        }
+                        imglist[slideIndex -1].style.display = "block";
+                    }
+
+                    setInterval(() => {
+                        plusDivs(1);
+                    }, 2000);
+                </script>
             </article>
 
             <hr>
@@ -47,35 +89,116 @@
                     </div>
                     <div class="team-profile">
                         <div class="team-profile-img"> </div>
-                        <h3> UI & UX Design </h3>
+                        <h3> Frontend </h3>
                     </div>
                     <div class="team-profile">
                         <div class="team-profile-img"> </div>
-                        <h3> UI & UX Design </h3>
+                        <h3> Backend & Database </h3>
                     </div>
                 </section>
             </section>
 
             <hr>
 
-            <section>
+            <section id="our-achivement">
+                <header>
+                    <h1>Our Achivements</h1>
+                </header>
+                <div class="table-achivement">
+                    <table>
+                        <caption><b>Here is some example of our student's Achivement</b></caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Competition level</th>
+                            <th>Achivement</th>
+                        </tr>
+                        <tr>
+                            <td>Inod</td>
+                            <td>East Java</td>
+                            <td>South-east Asia</td>
+                            <td>Gold Medal SE</td>
+                        </tr>
+                        <tr>
+                            <td>Wawan</td>
+                            <td>Central Kalimantan</td>
+                            <td>International</td>
+                            <td>Silver Medal Web-Development Competition</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Common,we are waiting for u guyss!! </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <hr>
+
+            <section id="message-us">
                 <header>
                     <h1> Message Us in here!!</h1>
                 </header>
                 <section class="message-us-container">
                     <div>
-                        <form>ini form</form>
+                        <form method="post" name="message-form" onsubmit="return validateForm()">
+                            <label for="name">Name  :</label>
+                            <input type="text" name="name" id="name" placeholder="write your name!!">
+                            <br></br>
+                            <label for="birth">Date of Birth    :</label>
+                            <input type="date" name="birth-date" id="birth-date">
+                            <br></br>
+                            <label for="gender">Gender  :</label>
+                            <input type="radio" name="gender" id="male" value="male">
+                            <label for="male">Male</label>
+                            <input type="radio" name="gender" id="female" value="female">
+                            <label for="female">Female</label>
+                            <br></br>
+                            <label for="messages">Messages    :</label>
+                            <br>
+                            <textarea name="messages" id="messages" placeholder="write something here!!"></textarea>
+                            <br>
+                            <input type="button" value="Submit">
+                        </form>
                     </div>
-                    <div>ini data diri</div>
+                    <div>
+                        <fieldset>
+                            <legend>Result</legend>
+                            <p>Name: <span id="sender-name"></span></p>
+                            <p>Date of birth: <span id="sender-birth-date"></span></p>
+                            <p>Gender: <span id="sender-gender"></span></p>
+                            <p>Messages: <span id="sender-messages"></span></p>
+                        </fieldset>
+                    </div>
                 </section>
             </section>
         </main>
 
         <hr>
+
         <footer class="footer">
             <p>created by Doni Irawan</p>
         </footer>
         <hr>
+        <script src="js/script.js">
+            function validateForm() {
+                const name = document.forms["message-form"]["name"].value;
+                const birthdate = document.forms["message-form"]["birht-date"].value;
+                const gender = document.forms["message-form"]["gender"].value;
+                const messages = document.forms["message-form"]["message"].value;
+                if (name += "" || birthdate += "" || gender += "" || messages += "") {
+                    alert("Tidak boleh kosong");
+                    return false;
+                }
+                setSenderUI(name, birthdate, gender, messages);
+                return false;
+            }
+            function setSenderUI(name, birthdate, gender, messages) {
+                document.getElementById("sender-name").innerHTML = name;
+                document.getElementById("sender-birth-date").innerHTML = birthdate;
+                document.getElementById("sender-gender").innerHTML = gender;
+                document.getElementById("sender-messages").innerHTML = messages;
+            }
+        </script>
     </body>
 
 </html>

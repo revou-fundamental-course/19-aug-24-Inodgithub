@@ -5,6 +5,19 @@ nav {
     justify-content: space-between;
 }
 
+@media screen and (max-width: 600px){
+    .header-wrapper {
+        flex-direction: column;
+    }
+     .nav-container {
+        width: 100%;
+        flex-direction: column;
+     }
+     .logo-icon {
+        margin-bottom: 20px;
+     }
+}
+
 .logo-icon {
     height: 45px;
     width: 45px;
@@ -18,21 +31,19 @@ nav {
 }
 
 .nav-item {
-    border: 2px solid;
+    border: 1px solid;
     color: brown;
     text-decoration: none;
     font-size: 15px;
     font-weight: bold;
     padding: 5px;
-    border-radius: 10%;
+    border-radius: 8%;
     background-color: cornsilk;
+    text-align: center;
 }
 
-.banner-img {
-    height: 450px;
-    background-image: url(https://picsum.photos/200);
-    background-size: cover;
-    background-position: center;
+.img-slideshow {
+    width: 100%;
 }
 
 .profile-container {
@@ -48,7 +59,7 @@ nav {
 .team-profile-img {
     height: 70px;
     width: 70px;
-    background-image: url(https://picsum.photos/200);
+    background-image: url(https://picsum.photos/1000/200?grayscale);
     background-size: cover;
     background-position: center;
     border-radius: 50%;
@@ -59,7 +70,37 @@ nav {
     justify-content: space-around;
 }
 
+.table-achivement {
+    display: flex;
+    justify-content: center;
+}
+
+table, th, td {
+    width: 700px;
+    text-align: center;
+    border: 2px solid;
+    border-color: brown;
+    border-collapse: collapse;
+}
+
+ th {
+    background-color: brown;
+ }
+ 
+ textarea {
+    width: 250px;
+    height: 150px;
+    resize: both;
+ }
+
+ 
+
+ fieldset {
+    width: 300px;
+    height: 200px;
+ }
+ 
 .footer {
     text-align: end;
-    
+    background-color: chocolate;
 }
