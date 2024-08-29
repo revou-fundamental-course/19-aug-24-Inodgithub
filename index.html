@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html >
     
     <head>
         <meta charset="UTF-8">
-        <meta name="view port" content="width-device-width, initial-scale-1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> My Document</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -29,11 +29,7 @@
         <main>
             <article id="home-us">
                 <header>
-                    <input required type="text" placeholder="Please type your name!!" id="user-name">
-                    <button id="submit">Submit</button>
-                    <p id="error-name"></p>
-                    <h1>Hi <span id="user">User</span>, Welcome to Our Website !!!</h1>
-                    
+                    <h1 id="welcome">Welcome to Our Website !!!</h1>
                 </header>
                 <p>Good morning/afternood/night guyss, hope u can enjoy with our content</p>
                 <div>
@@ -52,28 +48,6 @@
                     <button onclick="plusDivs(-1)">Previous</button>
                     <button onclick="plusDivs(1)">Next</button>
                 </div>
-                <script>
-                    var slideIndex = 1;
-                    showDivs(slideIndex);
-                    
-                    function plusDivs(n) {
-                        showDivs(slideIndex += n);
-                    }
-                    function showDivs(n) {
-                        var i;
-                        var imglist = document.getElementsByClassName("img-slideshow");
-                        if (n > imglist.length) {slideIndex = 1}
-                        else if (n < 1) {slideIndex = imglist.length} ;
-                        for (i = 0; i < imglist.length; i++) {
-                            imglist[i].style.display = "none";
-                        }
-                        imglist[slideIndex -1].style.display = "block";
-                    }
-
-                    setInterval(() => {
-                        plusDivs(1);
-                    }, 2000);
-                </script>
             </article>
 
             <hr>
@@ -140,29 +114,43 @@
                 </header>
                 <section class="message-us-container">
                     <div>
-                        <form method="post" name="message-form" onsubmit="return validateForm()">
-                            <label for="name">Name  :</label>
-                            <input type="text" name="name" id="name" placeholder="write your name!!">
-                            <br></br>
-                            <label for="birth">Date of Birth    :</label>
-                            <input type="date" name="birth-date" id="birth-date">
-                            <br></br>
-                            <label for="gender">Gender  :</label>
-                            <input type="radio" name="gender" id="male" value="male">
-                            <label for="male">Male</label>
-                            <input type="radio" name="gender" id="female" value="female">
-                            <label for="female">Female</label>
-                            <br></br>
-                            <label for="messages">Messages    :</label>
-                            <br>
-                            <textarea name="messages" id="messages" placeholder="write something here!!"></textarea>
-                            <br>
-                            <input type="button" value="Submit">
+                        
+                        <form id="the-form" name="the-form" method="post" onsubmit="return validateForm()">
+                            <div class="column">
+                                <label class="labels">
+                                    Name:
+                                </label>
+                                <input class="input" type="text" id="name-input" name="fullname"/>
+                            </div>
+                            <div class="column">
+                                <label class="labels">
+                                    Birth Date:
+                                </label>
+                                <input class="input" type="date" id="birhtdate" name="birthdate"/>
+                            </div>
+                            <div class="column" id="gender-select">
+                                <label class="labels" id="gender-label">
+                                    Gender:
+                                </label>
+                                <input type="radio" id="male" name="gen-select1" value="male"/>
+                                <label for="male" id="male-label">Male</label>
+                                <input type="radio" id="fem" name="gen-select1" value="female"/>
+                                <label for="fem" id="fem-label">Female</label>
+                            </div>
+                            <div class="column">
+                                <label class="labels">
+                                    Message:
+                                </label>
+                                <input class="input" type="text" id="message" name="message-input" placeholder="Write here!!"/>
+                            </div>
+                            <div class="column">
+                                <input  type="button" value="submit" id="submit" onclick="return validateForm()">
+                            </div>
                         </form>
                     </div>
                     <div>
                         <fieldset>
-                            <legend>Result</legend>
+                            <legend><b>Result</b></legend>
                             <p>Name: <span id="sender-name"></span></p>
                             <p>Date of birth: <span id="sender-birth-date"></span></p>
                             <p>Gender: <span id="sender-gender"></span></p>
@@ -176,29 +164,10 @@
         <hr>
 
         <footer class="footer">
-            <p>created by Doni Irawan</p>
+            <p><b>created by Doni Irawan</b></p>
         </footer>
         <hr>
-        <script src="js/script.js">
-            function validateForm() {
-                const name = document.forms["message-form"]["name"].value;
-                const birthdate = document.forms["message-form"]["birht-date"].value;
-                const gender = document.forms["message-form"]["gender"].value;
-                const messages = document.forms["message-form"]["message"].value;
-                if (name += "" || birthdate += "" || gender += "" || messages += "") {
-                    alert("Tidak boleh kosong");
-                    return false;
-                }
-                setSenderUI(name, birthdate, gender, messages);
-                return false;
-            }
-            function setSenderUI(name, birthdate, gender, messages) {
-                document.getElementById("sender-name").innerHTML = name;
-                document.getElementById("sender-birth-date").innerHTML = birthdate;
-                document.getElementById("sender-gender").innerHTML = gender;
-                document.getElementById("sender-messages").innerHTML = messages;
-            }
-        </script>
+        <script src="js\script.js"></script>
     </body>
 
 </html>
